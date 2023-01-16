@@ -39,7 +39,7 @@
 
 \usepackage{wrapfig}
 \titleformat{\section}
-{\normalfont\large\bfseries}{\thesection}{1em}{}
+{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
 {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
 \usepackage{tocloft}
@@ -55,6 +55,7 @@
 \newcommand{\yx}{_{yx}}
 \newcommand{\xx}{_{xx}}
 \newcommand{\yy}{_{yy}}
+\newcommand{\okruh}[1]{\section*{\Large #1}}
 
 %--- KONEC PREAMBULE ---
 
@@ -84,7 +85,7 @@
 \newpage
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Modelování - syntéza a analýza}
-\section*{Modelování - syntéza a analýza}
+\okruh{Modelování - syntéza a analýza}
 %1
 \section{Co znamená pojem modelování signálu nebo systému? Vyjmenujte některé aplikace, ve kterých se používá.}
 Ze slajdu: \uv{Modelování signál rozumíme použití LTI filtrů s přenosem ve tvaru racionální lomené funkce a jejich vstupu přivedeme deterministický signá s konstatním spektrem (dirac) nebo náhodný signál s konstantní výkonovou hustotou (PSD) (bílý šum)}
@@ -406,7 +407,7 @@ Ten rozdíl bude asi zase takovejhle, idk man:a následujících obrázcích jso
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Měření zpoždění mezi signály}
-\section*{Měření zpoždění mezi signály} 
+\okruh{Měření zpoždění mezi signály} 
 %12
 \section{Co znamená termín nedisperzní a disperzní prostředí. Jak lze tato prostředí modelovat ve spojité i diskrétní oblasti? Vysvětlete a popište tato prostředí jak v časové tak i ve spektrální oblasti. Proč nás určení zpoždění mezi signály zajímá?}\label{sec:zpozdeni:uvod}
 
@@ -564,7 +565,7 @@ U CPSD je informace o zpoždění zakódovaná ve fázi (viz \ref{sec:zpozdeni:S
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Koherenční funkce}
-\section*{Koherenční funkce}
+\okruh{Koherenční funkce}
 %19
 \section{Definujte koherenční funkci a vysvětlete její význam. Jak se liší od korelačního koeficientu?}
 Koherenční funkce - normovaná CPSD
@@ -654,7 +655,7 @@ Ano. Ne přímo skrze MSC, ale přes koherenční fci - zjistíme z fáze. Koher
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Kepstrální analýza a její aplikace, míry}
-\section*{Kepstrální analýza a její aplikace, míry}
+\okruh{Kepstrální analýza a její aplikace, míry}
 %25
 \section{Vysvětlete princip superpozice a zobecnělý princip superpozice. Co znamená pojem konvoluce a dekonvoluce. Jak lze provést dekonvoluci při znalosti vstupního a výstupního signálu a co je výsledkem této dekonvoluce?}
 Odezvy více složek systému lze rozdělit na jednotlivé odezvy a poté sečíst. Transformace součtu je součet transformací. 
@@ -819,7 +820,7 @@ Kepstrální vzdálenost se určí ze spektrální vzdálenosti. Ze spektrální
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Ortogonální transformace}
-\section*{Ortogonální transformace}
+\okruh{Ortogonální transformace}
 %42
 \section{Co znamená pojem ortogonální transformace? Jak lze tento typ transformace poznat?}
 Transformace, kde jsou na sebe bázové vektory kolmé.
@@ -880,7 +881,7 @@ KLT (PCA), DWT, FT, FS, diskrétní sinová transformace.
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
-\section*{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
+\okruh{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
 
 \section{Popište princip rozkladu signálu na hlavní komponenty (PCA). Co tyto komponenty představují?}
 Hledání vlastních čísel a vlastích vektorů. Následně promítneme data ve směru hlavních vektorů. Následně zjišťujeme rozptyl těchto komponent. Pro kompresi bereme tolik, abychom dostali např. 95~\% původní hodnoty.
@@ -990,7 +991,7 @@ Matici $V^T$ získáme metodou PCA a nebo EVD (eigen value decomposition) $\left
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
-\section*{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
+\okruh{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
 %60
 \section{Načrtněte model a napište rovnice pro zkreslení signálu aditivním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
 
@@ -1106,7 +1107,7 @@ když má filtr nuly vně jednotkové kružnice, tak jakmile udělám inverzní,
 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Slepá separace a dekonvoluce}
-\section*{Slepá separace a dekonvoluce}
+\okruh{Slepá separace a dekonvoluce}
 
 %68
 \section{Jaké dva základní způsoby učení/trénování adaptivních filtrů nebo klasifikačních algoritmů znáte? Vysvětlete princip a rozdíly.}
@@ -1160,7 +1161,7 @@ FastICA - separace.
 \clearpage 
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
-\section*{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
+\okruh{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
 
 \section{Vysvětlete postup analýzy signálu pomocí FT a STFT. Jak se jmenují výstupy obou metod a co fyzikálně představují?}
 Dyž FT, tak Spektrum\\
