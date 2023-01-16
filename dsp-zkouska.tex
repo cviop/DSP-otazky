@@ -35,8 +35,9 @@
 \usepackage{gensymb}
 \usepackage{outlines}
 \usepackage[normalem]{ulem}
+\usepackage{datetime}
 
-
+\usepackage{wrapfig}
 \titleformat{\section}
 {\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
@@ -59,6 +60,25 @@
 
 
 \begin{document}
+
+
+
+\pagestyle{fancy}                                           %vlastni zahlavi/zapati
+\renewcommand{\headrulewidth}{0.5pt}                        %linka v~zahlavi
+\renewcommand{\footrulewidth}{0pt}                          %linka v~zapati - optional
+\lhead{}       \chead{verze \today,~\currenttime} \rhead{}  %pole zahlavi
+\lfoot{ } \cfoot{ } \rfoot{ }                                  %pole zapati
+
+\begin{center}
+    {\Large \textbf{DSP otázky}}\\
+    {\normalfont Nejnovější verzi najdete vždy na \url{https://github.com/cviop/DSP-otazky/blob/main/dsp-zkouska.pdf}}\\
+\end{center}
+
+
+%\hfill J.D.
+
+
+
 \tableofcontents
 \newpage
 \section{Modelování - syntéza a analýza}
