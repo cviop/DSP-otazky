@@ -1,0 +1,145 @@
+\documentclass[a4paper,12pt]{article}   % papír A4, písmo 12 bodu
+\usepackage[utf8x]{inputenc}            %kodovaní UTF-8
+\usepackage{ucs}                        %kodovani unicode
+\usepackage[czech]{babel}               %podpora cestiny
+\usepackage[T1]{fontenc}                %pouzij variantu pisma T1 (hacky, carky)
+\usepackage[left=3.5cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry} %okraje stranky
+\usepackage{amsmath,amsfonts,amssymb}   %podpora matematiky
+\usepackage{gensymb,marvosym}           %symboly celsius (\celsius) apod.
+%\usepackage{mathptmx}                   %font Times New Roman s~podporou matematiky
+\usepackage{times}                      %font Times New Roman (matematika pismem Computer Modern) 
+\usepackage{parskip}                    %mezera mezi odstavci
+\usepackage[none]{hyphenat} \sloppy     %slova nedelit a~nepretekat
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\clubpenalty 10000                      %kontrolovat sirotky
+\widowpenalty 10000                     %kontrolovat vdovy
+\usepackage{setspace} \onehalfspacing   %podpora pro zmenu radkovani + radkovani 1,5
+\usepackage{enumerate}                  %podpora pro zmenu cislovani
+\usepackage{parskip}
+\usepackage{fancyhdr}                   %vlastni zahlavi a~zapati
+\usepackage{graphicx}                   %podpora grafiky
+\graphicspath{{img/}}                   %vychozi adresar s~obrazky
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{siunitx}
+
+        %%%%%%%--prostredi pro vkladani grafu ---%%%%%%%%%%
+\usepackage{float}
+
+\usepackage{url}
+\usepackage[unicode]{hyperref}
+\usepackage{mhchem}
+        %%%%%%%--prostredi pro vkladani grafu ---%%%%%%%%%%
+
+\usepackage{gensymb}
+
+
+
+
+
+%--- KONEC PREAMBULE ---
+
+
+
+\begin{document}
+
+\section{Modelování - syntéza a analýza}
+\subsection{Co znamená pojem modelování signálu nebo systému? Vyjmenujte některé aplikace, ve kterých se používá.}
+\subsection{Popište proces filtrace deterministického signálu LTI (lineárním časově invariantním) filtrem v časové, korelační a spektrální oblasti. Uveďte podmínky pro vstupní signál. Vysvětlete, jak vypadá korelační funkce a spektrum výstupního signálu. Vysvětlete, jak vypadá vzájemná korelace a vzájemné spektrum.}
+\subsection{Popište proces filtrace náhodného signálu LTI filtrem v časové, korelační a spektrální oblasti. Uveďte podmínky pro vstupní signál. Vysvětlete, jak vypadá korelační funkce a výkonová spektrální hustota výstupního signálu. Vysvětlete, jak vypadá vzájemná korelace a vzájemná výkonová spektrální hustota.}
+\subsection{Vysvětlete, co znamená pojem autoregresní (AR) proces (signál). Jak jej lze generovat? Nakreslete blokové schéma pro generování AR signálu a popište jej.}
+\subsection{Jaký je vztah pro výpočet autoregresní spektrální hustoty? Jaký je typický tvar autoregresní spektrální hustoty? Jak souvisí řád AR modelu s počtem maxim v AR spektrální hustotě?}
+\subsection{Proč je výhodné AR spektrální hustotu používat? Jak se liší AR spektrální hustota od spektrální hustoty určeného pomocí Fourierovy transformace? Pokuste se načrtnout typické tvary pro oba přístupy.}
+\subsection{Jak souvisí AR model s číslicovými filtry a číslicovou filtrací? Nakreslete příklad generování AR signálu s využitím příslušného číslicového filtru a načrtněte odpovídající tvar AR spektrální hustoty.}
+\subsection{Předpokládejte, že máte signál, který odpovídá AR modelu. Jak zjistíte parametry tohoto modelu? Načtrtněte blokové schéma analýzy a popište jej.}
+\subsection{Co znamená termín lineární predikce? Co je chyba predikce? Co znamená termín dekorelace signálu a dekorelační (bělicí) filtr? Jak získáme jeho koeficienty?}
+\subsection{Co jsou a k čemu slouží normální (Yuleovy-Walkerovy) rovnice?}
+\subsection{Popište postup vedoucí k určení AR spektrální hustoty. V čem se liší od spektrální hustoty získané Welchovou metodou z hlediska typického tvaru, spektrálního rozlišení, potřebné délky signálu a odolnosti vůči aditivnímu šumu?}
+
+\section{Měření zpoždění mezi signály}
+\subsection{Co znamená termín nedisperzní a disperzní prostředí. Jak lze tato prostředí modelovat ve spojité i diskrétní oblasti? Vysvětlete a popište tato prostředí jak v časové tak i ve spektrální oblasti. Proč nás určení zpoždění mezi signály zajímá?}
+\subsection{Jaké charakteristiky lze využít pro měření zpoždění mezi signály? Jak jejich volbu ovlivňuje typ prostředí? Jaké podmínky musí být splněny pro získání spolehlivého odhadu zpoždění?}
+\subsection{Jak vypadá vzájemná korelace mezi signálem na vstupu a na výstupu LTI soustavy? Jaký je její vztah k autokorelaci vstupního signálu?}
+\subsection{Jak lze ze vzájemné korelační funkce určit zpoždění mezi vstupním a výstupním signálem LTI soustavy? Načrtněte obrázek a pomocí něj vysvětlete. Jak souvisí toto zpoždění se vzorkovací frekvencí?}
+\subsection{Jaký vliv má aditivní šum, který působí na výstupu soustavy a je nekorelovaný se signálem na výpočet vzájemné korelace a tedy odhad zpoždění?}
+\subsection{V jakém vztahu jsou autospektrální spektrální hustoty signálu na vstupu a na výstupu LTI soustavy? Jak lze vyjádřit vzájemnou spektrální hustotu (CSPD) mezi vstupem a výstupem LTI systému?}
+\subsection{Porovnejte výhody a nevýhody měření zpoždění mezi signály pomocí vzájemné korelační funkce a fáze vzájemné spektrální hustoty – jaké jsou podmínky správného měření? Proč se pro měření zpoždění používá fáze a nikoliv modul CSPD?}
+
+\section{Koherenční funkce}
+\subsection{Definujte koherenční funkci a vysvětlete její význam. Jak se liší od korelačního koeficientu? 20. Jak se MSC (kvadrát modulu koherenční funkce) liší od koherenční funkce?}
+\subsection{K čemu se MSC používá a jaké má vlastnosti z hlediska šumu, nelinearity systému a chyb měření?}
+\subsection{Jak se správně provede odhad MSC? Vysvětlete co se stane, když je použit nesprávný postup.}
+\subsection{Jak se projeví aditivní šum na vstupu i výstupu soustavy, který je nekorelovaný se signálem, na hodnotě MSC? Jak se projeví filtrace signálu na hodnotě MSC?}
+\subsection{Lze koherenci použít pro odhad zpoždění mezi signály?}
+
+\section{Kepstrální analýza a její aplikace, míry}
+\subsection{Vysvětlete princip superpozice a zobecnělý princip superpozice. Co znamená pojem konvoluce a dekonvoluce. Jak lze provést dekonvoluci při znalosti vstupního a výstupního signálu a co je výsledkem této dekonvoluce?}
+\subsection{Lze provést dekonvoluci pouze ze znalosti výstupního signálu LTI systému? Jaké podmínky je třeba splnit, aby tato úloha měla řešení?}
+\subsection{K čemu se kepstrální analýza používá? Je to lineární nebo nelineární metoda analýzy?}
+\subsection{Vyjmenujte tři základní bloky používané pro kepstrální analýzu a rekonstrukci signálu. 29. Jakými operacemi se realizují základní bloky kepstrální analýzy při použití DFT?}
+\subsection{Jakými bloky a operacemi se realizují základní bloky rekonstrukce signálu při použití DFT? 31. Co je liftrace a k čemu slouží?}
+\subsection{Jakou informaci nese kepstrum na nízkých kvefrencích a jakou na vysokých?}
+\subsection{Proč kepstrum dokáže odhalit i slabý odraz?}
+\subsection{Jaký je vztah mezi spektrem, logaritmickým spektrem, autokorelační funkcí a kepstrem? 35. Lze kepstrální koeficienty získat i jiným způsobem, než pomocí DFT? Vysvětlete stručně alternativní postup jejich výpočtu.}
+\subsection{Porovnejte vlastnosti kepstra získaného pomocí DFT a pomocí AR modelu.}
+\subsection{Vyjmenujte některé aplikace kepstrální analýzy.}
+\subsection{Jaké vlastnosti má metrika (míra)? Jaké typy metrik a integrálních metrik znáte? Uveďte příklad vybrané metriky.}
+\subsection{Definujte spektrální vzdálenost. Souvisí tato metrika s kepstrální vzdáleností? 40. Jak se určí kepstrální vzdálenost pro konečný počet kepstrálních koeficientů?}
+\subsection{Shrňte vlastnosti a význam kepstrální vzdálenosti.}
+
+\section{Ortogonální transformace}
+\subsection{Co znamená pojem ortogonální transformace? Jak lze tento typ transformace poznat?}
+\subsection{Je DFT ortogonální transformací? Zapište DFT v maticové tvaru a vysvětlete jednotlivé položky tohoto zápisu.}
+\subsection{Pro jaký typ funkce (signálu) lze ze spojité Fourierovy transformace získat spojitou Fourierovu kosinovou transformaci?}
+\subsection{Vysvětlete principiálně postup úpravy posloupnosti x[n] vedoucí k definici DCT-1 a DCT-2. Jsou tyto transformace ortogonálními trasformacemi?}
+\subsection{Jaký je vztah mezi DFT a DCT-1 a jaký mezi DFT a DCT-2. Lze DCT získat pomocí DFT? Jaké úpravy je třeba provést? Stačí vysvětlit slovně nebo s použitím vhodného náčrtku.}
+\subsection{Znáte, kromě DFT a DCT, další ortogonální transformace?}
+
+\section{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
+\subsection{Popište princip rozkladu signálu na hlavní komponenty (PCA). Co tyto komponenty představují?}
+\subsection{Jakou matici PCA používá? Vysvětlete fyzikální význam prvků této matice 50. Na co je rozložena korelační matice pomocí metody PCA?}
+\subsection{Co fyzikálně představují vlastní vektory a vlastní čísla?}
+\subsection{Uveďte příklad, kdy metoda PCA selže. Existuje možnost nápravy?}
+\subsection{Jak lze PCA použít pro ztrátovou kompresi 1-D signálů pomocí KLT (Karhunenovy-Loevovy transformace)?}
+\subsection{Lze pro ztrátovou kompresi použít DCT nebo DFT? V čem se liší postup komprese pomocí DCT nebo DFT od PCA/KLT? Jak se liší dosažitelný stupeň komprese těchto tří metod?}
+\subsection{V čem se liší báze DCT či DFT od báze PCA/KLT? Která z těchto metod poskytuje největší kompresní poměr a proč?}
+\subsection{Pomocí čeho se stanovuje počet složek, které použijeme pro ztrátovou kompresi a jak tyto složky vybereme? Porovnejte mezi sebou DFT, DCT a PCA/KLT.}
+\subsection{Co při rozkladu signálu pomocí DFT představují hodnoty modulového spektra |X[k]| nebo výkonového spektra |X[k]|2? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
+\subsection{Co při rozkladu signálu pomocí DCT představují hodnoty DCT-spektra? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
+\subsection{Co při rozkladu signálu pomocí PCA představují vlastní čísla? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
+
+\section{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
+\subsection{Načrtněte model a napište rovnice pro zkreslení signálu aditivním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
+\subsection{Načrtněte model a napište rovnice pro zkreslení signálu konvolučním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
+\subsection{Načrtněte model a napište rovnice pro zkreslení signálu aditivním a konvolučním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
+\subsection{Jak lze potlačit aditivní šum?}
+\subsection{Jak lze potlačit konvoluční šum?}
+\subsection{Vysvětlete princip a vlastnosti prosté inverzní filtrace.}
+\subsection{Co znamená pojem šumová katastrofa a kdy k ní dochází? Vysvětlete pro deterministické signály. Jak ji lze potlačit?}
+\subsection{Jaké existují modifikace inverzní filtrace? Napište příslušné vztahy pro inverzní filtraci, které objasní šumovou katastrofu a popíší modifikace inverzní filtrace (lze použít deterministický popis).}
+
+\section{Slepá separace a dekonvoluce}
+\subsection{Jaké dva základní způsoby učení/trénování adaptivních filtrů nebo klasifikačních algoritmů znáte? Vysvětlete princip a rozdíly.}
+\subsection{Jaké jsou předpoklady pro slepou separaci signálů/zdrojů? Jaké jsou předpoklady pro slepou dekonvoluci ?}
+\subsection{čím se liší slepá separace od slepé dekonvoluce? K čemu slouží obě metody? Do které skupiny patří metoda nazývaná FastIca?}
+\subsection{Jaké dekonvoluční metody jsme v tomto kursu poznali? čím se od sebe liší a jaké jsou jejich předpoklady pro úspěšnou dekonvoluci?}
+
+\section{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
+\subsection{Vysvětlete postup analýzy signálu pomocí FT a STFT. Jak se jmenují výstupy obou metod a co fyzikálně představují?}
+\subsection{Jaký je základní rozdíl mezi STFT a CWT?}
+\subsection{Jak vypadá časově-frekvenční rozlišení pro SFTF a DWT?}
+\subsection{Co znamenají pojmy vlnka, hladina, aproximace a detaily? Uveďte vhodný příklad s náčrtkem pro vysvětlení těchto pojmů.}
+\subsection{čím se liší CWT od DWT? K čemu se používají?}
+\subsection{Co znamenají pojmy měřítková funkce a měřítková rovnice, vlnka a vlnková rovnice? Uveďte libovolný příklad pro vysvětlení těchto pojmů a vztahů mezi nimi.}
+\subsection{Načrtněte banku filtrů, která realizuje DWT. Jak impulsové odezvy použitých filtrů souvisejí s měřítkovou funkcí a vlnkou?}
+\subsection{Vysvětlete princip základního způsobu redukce šumů pomocí DWT. Co znamená měkké a tvrdé prahování?}
+\subsection{Co znamená termín mateřská vlnka? Znáte nějaké typy těchto vlnek?}
+\subsection{Jak probíhá redukce šumu pomocí STFT a jak pomocí DWT?}
+\subsection{Načrtněte dvoupásmovou banku filtrů a vysvětlete následující pojmy: analyzující a syntetizující banka filtrů, perfektní rekonstrukce a důsledek požadavku perfektní rekonstrukce pro filtry použité v bance filtrů. Proč se v bance filtrů používá decimace a interpolace?}
+\subsection{Vysvětlete stručně postup návrhu dvoupásmové banky filtrů s perfektní rekonstrukcí. Jsou přenosové funkce filtrů použitých v dvoupásmové bance filtrů libovolné nebo jsou vázány nějakými podmínkami?}
+\subsection{Vysvětlete pojem kvadraturní zrcadlové filtry a načrtněte jejich frekvenční charakteristiky.}
+
+\end{document}
+
+
