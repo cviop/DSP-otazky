@@ -7,7 +7,7 @@
 \usepackage{amsmath,amsfonts,amssymb}   %podpora matematiky
 \usepackage{gensymb,marvosym}           %symboly celsius (\celsius) apod.
 %\usepackage{mathptmx}                   %font Times New Roman s~podporou matematiky
-\usepackage{times}                      %font Times New Roman (matematika pismem Computer Modern) 
+%\usepackage{times}                      %font Times New Roman (matematika pismem Computer Modern) 
 \usepackage{parskip}                    %mezera mezi odstavci
 \usepackage[none]{hyphenat} \sloppy     %slova nedelit a~nepretekat
 \usepackage{titlesec}
@@ -42,7 +42,8 @@
 {\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
 {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
-
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} %tecky v obsahu
 
 %macros
 \newcommand{\rrarr}{$\rightarrow$}
@@ -81,9 +82,11 @@
 
 \tableofcontents
 \newpage
-\section{Modelování - syntéza a analýza}
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Modelování - syntéza a analýza}
+\section*{Modelování - syntéza a analýza}
 %1
-\subsection{Co znamená pojem modelování signálu nebo systému? Vyjmenujte některé aplikace, ve kterých se používá. [1]}
+\section{Co znamená pojem modelování signálu nebo systému? Vyjmenujte některé aplikace, ve kterých se používá.}
 Ze slajdu: \uv{Modelování signál rozumíme použití LTI filtrů s přenosem ve tvaru racionální lomené funkce a jejich vstupu přivedeme deterministický signá s konstatním spektrem (dirac) nebo náhodný signál s konstantní výkonovou hustotou (PSD) (bílý šum)}
 
 \uv{Cílem filtrace je získání výstupního signálu s danými charakteristikami (korelace nebo spektrum). Tento signál (nebo filtr, který jej generuje) označujeme jako model příslušný reálnému signálu.}
@@ -122,7 +125,7 @@ Z-transformace nám ze zpoždění udělá záporné mocniny \uv{Zetka}, takže 
 
 
 %2
-\subsection{Popište proces filtrace deterministického signálu LTI (lineárním časově invariantním) filtrem v časové, korelační a spektrální oblasti. Uveďte podmínky pro vstupní signál. Vysvětlete, jak vypadá korelační funkce a spektrum výstupního signálu. Vysvětlete, jak vypadá vzájemná korelace a vzájemné spektrum.[2]}
+\section{Popište proces filtrace deterministického signálu LTI (lineárním časově invariantním) filtrem v časové, korelační a spektrální oblasti. Uveďte podmínky pro vstupní signál. Vysvětlete, jak vypadá korelační funkce a spektrum výstupního signálu. Vysvětlete, jak vypadá vzájemná korelace a vzájemné spektrum.}
 
 
 Vztah mezi energetickým spektrem $C_X(\ejt)$ a korelací \mt{R_X[k]}.
@@ -164,7 +167,7 @@ Pro filtr s impulzovou odezvou \mt{h[k]}, který budíme jednotkovým pulzem \mt
 
 
 %3
-\subsection{Popište proces filtrace náhodného signálu LTI filtrem v časové, korelační a spektrální oblasti. Uveďte podmínky pro vstupní signál. Vysvětlete, jak vypadá korelační funkce a výkonová spektrální hustota výstupního signálu. Vysvětlete, jak vypadá vzájemná korelace a vzájemná výkonová spektrální hustota.}
+\section{Popište proces filtrace náhodného signálu LTI filtrem v časové, korelační a spektrální oblasti. Uveďte podmínky pro vstupní signál. Vysvětlete, jak vypadá korelační funkce a výkonová spektrální hustota výstupního signálu. Vysvětlete, jak vypadá vzájemná korelace a vzájemná výkonová spektrální hustota.}
 
 Vstupní signál: náhodný, širokopásmový, deterministický
 
@@ -192,7 +195,7 @@ Pro filtr s impulzovou odezvou \mt{h[k]}, který budíme bílým šumem \mt{u[n]
 
 
 %4
-\subsection{Vysvětlete, co znamená pojem autoregresní (AR) proces (signál). Jak jej lze generovat? Nakreslete blokové schéma pro generování AR signálu a popište jej.}
+\section{Vysvětlete, co znamená pojem autoregresní (AR) proces (signál). Jak jej lze generovat? Nakreslete blokové schéma pro generování AR signálu a popište jej.}
 \label{sec:ar:intro}
 AR filtr: filtr tvořen pouze póly. AR spektrum vykazuje ostrá maxima a mělká údolí. AR proces \mt{AR(p)}, generovaný IIR filtrem řádu \mt{p}, který nemá dopředné vazby:
 \begin{align*}
@@ -210,7 +213,7 @@ Nuly budou v počátku a hrajeme si s umístěním pólů. Póly jsou to, co vyt
 
 
 %5
-\subsection{Jaký je vztah pro výpočet autoregresní spektrální hustoty? Jaký je typický tvar autoregresní spektrální hustoty? Jak souvisí řád AR modelu s počtem maxim v AR spektrální hustotě?}
+\section{Jaký je vztah pro výpočet autoregresní spektrální hustoty? Jaký je typický tvar autoregresní spektrální hustoty? Jak souvisí řád AR modelu s počtem maxim v AR spektrální hustotě?}
 
 LP spektrum (AR spektrum). Jedná se o vyjádření PSD signálu \mt{x[n]} pomocí frekvenční charakteristiky chybového filtru. 
 \begin{align*}
@@ -254,7 +257,7 @@ Dává smysl, že má MA ostrá minima a plochá maxima. Jelikož v MA procesu h
 
 
 %6
-\subsection{Proč je výhodné AR spektrální hustotu používat? Jak se liší AR spektrální hustota od spektrální hustoty určeného pomocí Fourierovy transformace? Pokuste se načrtnout typické tvary pro oba přístupy.}
+\section{Proč je výhodné AR spektrální hustotu používat? Jak se liší AR spektrální hustota od spektrální hustoty určeného pomocí Fourierovy transformace? Pokuste se načrtnout typické tvary pro oba přístupy.}
 Frekvenční rozlišení AR spektra (LP spektra) téměř nezávisí na délce signálu, tedy lze použít i pro krátké signály. 
 
 Na následujících obrázcích jsou analýzy spektra tří sinusovek vytvořená pomocí DFT a AR spektra\\
@@ -285,7 +288,7 @@ Sinusovky v šumu (SNR=0 dB)\\
 
 
 %7
-\subsection{Jak souvisí AR model s číslicovými filtry a číslicovou filtrací? Nakreslete příklad generování AR signálu s využitím příslušného číslicového filtru a načrtněte odpovídající tvar AR spektrální hustoty.}
+\section{Jak souvisí AR model s číslicovými filtry a číslicovou filtrací? Nakreslete příklad generování AR signálu s využitím příslušného číslicového filtru a načrtněte odpovídající tvar AR spektrální hustoty.}
 AR  bude mít ostré kope a mělká údolí.
 
 AR(p) proces lze generovat IIR filtrem řádu \mt{p}, který nemá dopředné vazby (\mt{u[n]} je bílý šum):
@@ -302,7 +305,7 @@ Tenhle vzoreček byl už v otázce \ref{sec:ar:intro} \uv{\textit{Vysvětlete, c
 
 
 %á
-\subsection{Předpokládejte, že máte signál, který odpovídá AR modelu. Jak zjistíte parametry tohoto modelu? Načtrtněte blokové schéma analýzy a popište jej.}
+\section{Předpokládejte, že máte signál, který odpovídá AR modelu. Jak zjistíte parametry tohoto modelu? Načtrtněte blokové schéma analýzy a popište jej.}
 Parametry lze zjistit pomocí Yuleovy-Walkerovy metody viz. \ref{sec:yule}. 
 
 \textbf{Analýza signálu} \mt{x[n]}
@@ -328,7 +331,7 @@ pak je chybový signál \mt{e[n]} \textbf{bílým šumem}.
 \FloatBarrier
 
 %í
-\subsection{Co znamená termín lineární predikce? Co je chyba predikce? Co znamená termín dekorelace signálu a dekorelační (bělicí) filtr? Jak získáme jeho koeficienty?}\label{sec:lin:predikce}
+\section{Co znamená termín lineární predikce? Co je chyba predikce? Co znamená termín dekorelace signálu a dekorelační (bělicí) filtr? Jak získáme jeho koeficienty?}\label{sec:lin:predikce}
 
 Na základě minulých dat dokážeme sestavit AR model pro predikci budoucích dat. Analyzovaná data musí být stacionární (nemění se statistické vlastnosti s časem).
 
@@ -352,7 +355,7 @@ Pro minimalizaci chyby následně využíváme dvou metod. Buď minimalizujeme s
 
 
 %10
-\subsection{Co jsou a k čemu slouží normální (Yuleovy-Walkerovy) rovnice?}\label{sec:yule}
+\section{Co jsou a k čemu slouží normální (Yuleovy-Walkerovy) rovnice?}\label{sec:yule}
 Normální rovnice pro \textbf{autokorelační metodu}. Jedná se o sadu rovnic určenou k odhadu parametrů AR modelu. Díky čemuž můžeme učinit odhad budoucích hodnot. Pro správný odhad musí být proces stacionární stochastický a musíme znát ACF procesu. Poté YW rovnice berou ACF koeficienty a z nich tvoří koeficienty do AR modelu.
 \begin{align*}
         a_1 R_x[0] + a_2 R_x[1] = -R_x[1]\\
@@ -361,7 +364,7 @@ Normální rovnice pro \textbf{autokorelační metodu}. Jedná se o sadu rovnic 
 
 
 %11
-\subsection{Popište postup vedoucí k určení AR spektrální hustoty. V čem se liší od spektrální hustoty získané Welchovou metodou z hlediska typického tvaru, spektrálního rozlišení, potřebné délky signálu a odolnosti vůči aditivnímu šumu?}
+\section{Popište postup vedoucí k určení AR spektrální hustoty. V čem se liší od spektrální hustoty získané Welchovou metodou z hlediska typického tvaru, spektrálního rozlišení, potřebné délky signálu a odolnosti vůči aditivnímu šumu?}
 \begin{enumerate}
         \item Stanovení modelu autoregresního procesu podle počtu minulých hodnot (řád) např. pomocí autokorelační metody
         \item Určení koeficientů autokorelační funkce.
@@ -401,10 +404,11 @@ Ten rozdíl bude asi zase takovejhle, idk man:a následujících obrázcích jso
 
 \clearpage
 
-
-\section{Měření zpoždění mezi signály [12-16]} 
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Měření zpoždění mezi signály}
+\section*{Měření zpoždění mezi signály} 
 %12
-\subsection{Co znamená termín nedisperzní a disperzní prostředí. Jak lze tato prostředí modelovat ve spojité i diskrétní oblasti? Vysvětlete a popište tato prostředí jak v časové tak i ve spektrální oblasti. Proč nás určení zpoždění mezi signály zajímá?}\label{sec:zpozdeni:uvod}
+\section{Co znamená termín nedisperzní a disperzní prostředí. Jak lze tato prostředí modelovat ve spojité i diskrétní oblasti? Vysvětlete a popište tato prostředí jak v časové tak i ve spektrální oblasti. Proč nás určení zpoždění mezi signály zajímá?}\label{sec:zpozdeni:uvod}
 
 
 \textbf{Nedisperzní} prostředí:
@@ -446,7 +450,7 @@ Dochází ke změně tvaru korelace mezi vstupem a výstupem, nelze použít pro
 
 
 %13
-\subsection{Jaké charakteristiky lze využít pro měření zpoždění mezi signály? Jak jejich volbu ovlivňuje typ prostředí? Jaké podmínky musí být splněny pro získání spolehlivého odhadu zpoždění?}\label{sec:zpozdeni:zpusoby}
+\section{Jaké charakteristiky lze využít pro měření zpoždění mezi signály? Jak jejich volbu ovlivňuje typ prostředí? Jaké podmínky musí být splněny pro získání spolehlivého odhadu zpoždění?}\label{sec:zpozdeni:zpusoby}
 
 \textbf{Nedisperzní prostředí}:\\
 Pokud známe vstup \mt{x(t)} i výstup \mt{y(t)}, můžeme v nedisperzním prostředí použít \textbf{vzájemnou korelaci}. Pouze v nedisperzním! V disperzním se mění tvar korelační funkce výstupního signálu a nelze tak použít. 
@@ -488,7 +492,7 @@ Podmínky:
 
 
 %14
-\subsection{Jak vypadá vzájemná korelace mezi signálem na vstupu a na výstupu LTI soustavy? Jaký je její vztah k autokorelaci vstupního signálu?}
+\section{Jak vypadá vzájemná korelace mezi signálem na vstupu a na výstupu LTI soustavy? Jaký je její vztah k autokorelaci vstupního signálu?}
 Vzoreček zmíněn ve \ref{sec:zpozdeni:zpusoby}.
 \begin{align*}
         R_{yx}(\tau) = E[y(t+\tau)x(t)] \rightarrow k_0R_{xx}(\tau-\tau_0)
@@ -498,12 +502,12 @@ Rozdíl mezi \mt{R_{yx}} a \mt{R_{xx}} je pouze ve zpoždění \mt{\tau_0}.
 
 
 %15
-\subsection{Jak lze ze vzájemné korelační funkce určit zpoždění mezi vstupním a výstupním signálem LTI soustavy? Načrtněte obrázek a pomocí něj vysvětlete. Jak souvisí toto zpoždění se vzorkovací frekvencí?}
+\section{Jak lze ze vzájemné korelační funkce určit zpoždění mezi vstupním a výstupním signálem LTI soustavy? Načrtněte obrázek a pomocí něj vysvětlete. Jak souvisí toto zpoždění se vzorkovací frekvencí?}
 Popsáno v \ref{sec:zpozdeni:uvod} a \ref{sec:zpozdeni:zpusoby}. Najdeme si maximum korelace mezi vstupem a výstupem. Z pozice maxima vzájemné korelace získáme, o kolik vzorků jsou od sebe signály posunuté.
 
 
 %16
-\subsection{Jaký vliv má aditivní šum, který působí na výstupu soustavy a je nekorelovaný se signálem na výpočet vzájemné korelace a tedy odhad zpoždění?}
+\section{Jaký vliv má aditivní šum, který působí na výstupu soustavy a je nekorelovaný se signálem na výpočet vzájemné korelace a tedy odhad zpoždění?}
 Řečeno v \ref{sec:zpozdeni:uvod}, aditivní bílý šum \textbf{nemá vliv} na výpočet zpoždění. 
 
 Jelikož je podmínka \uv{nekorelovaný šum}, musí platit
@@ -517,7 +521,7 @@ Pro vzájemnou korelaci vstupu a výstupu můžeme psát
 
 
 %17
-\subsection{V jakém vztahu jsou autospektrální spektrální hustoty signálu na vstupu a na výstupu LTI soustavy? Jak lze vyjádřit vzájemnou spektrální hustotu (CPSD) mezi vstupem a výstupem LTI systému?} \label{sec:zpozdeni:SyxRyx}
+\section{V jakém vztahu jsou autospektrální spektrální hustoty signálu na vstupu a na výstupu LTI soustavy? Jak lze vyjádřit vzájemnou spektrální hustotu (CPSD) mezi vstupem a výstupem LTI systému?} \label{sec:zpozdeni:SyxRyx}
 
 Zmíněno v \ref{sec:zpozdeni:zpusoby}:
 \begin{align*}
@@ -532,7 +536,7 @@ Vztah mezi vstupem a výstupem:
 
 
 %18
-\subsection{Porovnejte výhody a nevýhody měření zpoždění mezi signály pomocí vzájemné korelační funkce a fáze vzájemné spektrální hustoty – jaké jsou podmínky správného měření? Proč se pro měření zpoždění používá fáze a nikoliv modul CPSD?}
+\section{Porovnejte výhody a nevýhody měření zpoždění mezi signály pomocí vzájemné korelační funkce a fáze vzájemné spektrální hustoty – jaké jsou podmínky správného měření? Proč se pro měření zpoždění používá fáze a nikoliv modul CPSD?}
 Úvod v \ref{sec:zpozdeni:zpusoby}.\\
 \textbf{Vzájemná korelační funkce}:
 \begin{outline}
@@ -556,9 +560,13 @@ U CPSD je informace o zpoždění zakódovaná ve fázi (viz \ref{sec:zpozdeni:S
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage \section{Koherenční funkce}
+\clearpage 
+
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Koherenční funkce}
+\section*{Koherenční funkce}
 %19
-\subsection{Definujte koherenční funkci a vysvětlete její význam. Jak se liší od korelačního koeficientu?}
+\section{Definujte koherenční funkci a vysvětlete její význam. Jak se liší od korelačního koeficientu?}
 Koherenční funkce - normovaná CPSD
 \begin{equation}
         \gamma_{yx}(f) = \frac{S_{yx}(f)}{\sqrt{S_{xx}(f)S_{yy}(f)}}
@@ -578,7 +586,7 @@ Korelační koeficient:
 
 
 %20
-\subsection{Jak se MSC (kvadrát modulu koherenční funkce) liší od koherenční funkce?}
+\section{Jak se MSC (kvadrát modulu koherenční funkce) liší od koherenční funkce?}
 
 MSC je  kvadrát modulu koherenční funkce (koherenční funkce je normovaná CPSD)
 
@@ -602,7 +610,7 @@ CPSD \rrarr \textit{normování} \rrarr koherenční funkce \rrarr \textit{modul
 
 
 %21
-\subsection{K čemu se MSC používá a jaké má vlastnosti z hlediska šumu, nelinearity systému a chyb měření?}
+\section{K čemu se MSC používá a jaké má vlastnosti z hlediska šumu, nelinearity systému a chyb měření?}
 
 Umožňuje odhadnout chybu měření, frekvenční charakteristiky, jestli je přítomen šum, nelinearita systému.
 
@@ -617,7 +625,7 @@ Příčiny nízké hodnoty MSC
 
 
 %22
-\subsection{Jak se správně provede odhad MSC? Vysvětlete co se stane, když je použit nesprávný postup.}
+\section{Jak se správně provede odhad MSC? Vysvětlete co se stane, když je použit nesprávný postup.}
 
 Welchova metoda, vzájemná spektrální hustota - \textbf{nejdříve průměrování} a pak až kvadrát modulu. Bez průměrování dostaneme MSC = 1 !!
 \begin{figure}[h!]
@@ -629,7 +637,7 @@ Welchova metoda, vzájemná spektrální hustota - \textbf{nejdříve průměrov
 
 
 %23
-\subsection{Jak se projeví aditivní šum na vstupu i výstupu soustavy, který je nekorelovaný se signálem, na hodnotě MSC? Jak se projeví filtrace signálu na hodnotě MSC?}
+\section{Jak se projeví aditivní šum na vstupu i výstupu soustavy, který je nekorelovaný se signálem, na hodnotě MSC? Jak se projeví filtrace signálu na hodnotě MSC?}
 
 Hodnota MSC se sníží. MSC říká, jaká část spektrální čáry je generovaná vstupem a jak á je generovaná šumem. Lin f nemůže MSC snížit. Pokud aditivní šum, sníží se. Nelineární filtr - sníží se. Pokud ale dostatečně dlouhý stac. signál
 
@@ -637,21 +645,25 @@ I když přidáme na výstup šum \mt{m(t)}, bude platit \mt{S_vx(f) = S_yx(f)},
 
 
 %24
-\subsection{Lze koherenci použít pro odhad zpoždění mezi signály?}
+\section{Lze koherenci použít pro odhad zpoždění mezi signály?}
 
 Ano. Ne přímo skrze MSC, ale přes koherenční fci - zjistíme z fáze. Koherenční fce \uv{jen} normovaná CPSD. Jednodušší je ale rovnou použít PSD \mt{S_x}.
 
 
-\newpage \section{Kepstrální analýza a její aplikace, míry}
+\clearpage
+
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Kepstrální analýza a její aplikace, míry}
+\section*{Kepstrální analýza a její aplikace, míry}
 %25
-\subsection{Vysvětlete princip superpozice a zobecnělý princip superpozice. Co znamená pojem konvoluce a dekonvoluce. Jak lze provést dekonvoluci při znalosti vstupního a výstupního signálu a co je výsledkem této dekonvoluce?}
+\section{Vysvětlete princip superpozice a zobecnělý princip superpozice. Co znamená pojem konvoluce a dekonvoluce. Jak lze provést dekonvoluci při znalosti vstupního a výstupního signálu a co je výsledkem této dekonvoluce?}
 Odezvy více složek systému lze rozdělit na jednotlivé odezvy a poté sečíst. Transformace součtu je součet transformací. 
 
 \textbf{Dekonvoluce}: převedeme na spektrum a podělíme \llarr dekonvoluce wow. 
 
 
 %26
-\subsection{Lze provést dekonvoluci pouze ze znalosti výstupního signálu LTI systému? Jaké podmínky je třeba splnit, aby tato úloha měla řešení?}
+\section{Lze provést dekonvoluci pouze ze znalosti výstupního signálu LTI systému? Jaké podmínky je třeba splnit, aby tato úloha měla řešení?}
 
 Ano, pomocí kepstrální analýzy.
 
@@ -663,25 +675,25 @@ Podmínky:
 
 
 %27
-\subsection{K čemu se kepstrální analýza používá? Je to lineární nebo nelineární metoda analýzy?}
+\section{K čemu se kepstrální analýza používá? Je to lineární nebo nelineární metoda analýzy?}
 
 Dekonvoluce signálů, nelineární (logaritmus)
 
 
 %28
-\subsection{Vyjmenujte tři základní bloky používané pro kepstrální analýzu a rekonstrukci signálu.}
+\section{Vyjmenujte tři základní bloky používané pro kepstrální analýzu a rekonstrukci signálu.}
 
 \mt{\mathscr{Z}, \mathscr{DFT}, \mathscr{DTFT} \rightarrow \text{log, exp }\rightarrow \mathscr{Z}^{-1}, i\mathscr{DFT}, i\mathscr{DTFT}}
 
 
 %29
-\subsection{Jakými operacemi se realizují základní bloky kepstrální analýzy při použití DFT?}
+\section{Jakými operacemi se realizují základní bloky kepstrální analýzy při použití DFT?}
 
 \mt{\mathscr{Z}, \mathscr{DFT}, \mathscr{DTFT} \rightarrow \text{log, exp }\rightarrow \mathscr{Z}^{-1}, i\mathscr{DFT}, i\mathscr{DTFT}}
 
 
 %30
-\subsection{Jakými bloky a operacemi se realizují základní bloky rekonstrukce signálu při použití DFT?}
+\section{Jakými bloky a operacemi se realizují základní bloky rekonstrukce signálu při použití DFT?}
 
 Viz předchozí.
 
@@ -693,20 +705,20 @@ Oříznutí kepstra, které je součet periodické a aperiodické složky. Norm�
 
 
 %32
-\subsection{Jakou informaci nese kepstrum na nízkých frekvencích a jakou na vysokých?}
+\section{Jakou informaci nese kepstrum na nízkých frekvencích a jakou na vysokých?}
 
 Nízké - aperiodické složky signálu\\
 Vysoké - periodické složky
 
 
 %33
-\subsection{Proč kepstrum dokáže odhalit i slabý odraz?}
+\section{Proč kepstrum dokáže odhalit i slabý odraz?}
 
 Protože kepstrální analýza zatlumí impuluz a zatlumení je dáno posloupností \mt{1/n}.
 
 
 %34
-\subsection{Jaký je vztah mezi spektrem, logaritmickým spektrem, autokorelační funkcí a kepstrem?}
+\section{Jaký je vztah mezi spektrem, logaritmickým spektrem, autokorelační funkcí a kepstrem?}
 
 ACF::\\
 \mt{x[n] \rightarrow \mathscr{DFT} \rightarrow \frac{1}{N}|\dots|^2 \rightarrow i\mathscr{DFT} \rightarrow R_x[k]}
@@ -732,7 +744,7 @@ Komplexní kepstrum
 
 
 %35
-\subsection{Lze kepstrální koeficienty získat i jiným způsobem, než pomocí DFT? Vysvětlete stručně alternativní postup jejich výpočtu.}
+\section{Lze kepstrální koeficienty získat i jiným způsobem, než pomocí DFT? Vysvětlete stručně alternativní postup jejich výpočtu.}
 
 Jo. Použitím lineární predikce LPC. Signál \mt{x[n]} nasegmentujeme, naváhujeme oknem a pošleme do LPC. Tím získáme AR koeficienty. Liší se ve výpočtu spektrální výkonové hustoty. Welch (origo) nebo LPC. LPC bude mít méně detailů, jelikož budeme používat vyhlazené spektrum. 
 
@@ -740,13 +752,13 @@ AR koeficienty lze pomocí rekurzivní rovnice převést na kepstrální koefici
 
 
 %36
-\subsection{Porovnejte vlastnosti kepstra získaného pomocí DFT a pomocí AR modelu.}
+\section{Porovnejte vlastnosti kepstra získaného pomocí DFT a pomocí AR modelu.}
 
 AR model bude mít vyhlazenější kepstrum, ale bude náchylnější na šum.
 
 
 %37
-\subsection{Vyjmenujte některé aplikace kepstrální analýzy.}
+\section{Vyjmenujte některé aplikace kepstrální analýzy.}
 \begin{outline}
         \1 dekonvoluce řeči
         \1 parametrizace řeči pro účely analýzy a rozpoznání
@@ -757,7 +769,7 @@ AR model bude mít vyhlazenější kepstrum, ale bude náchylnější na šum.
 
 
 %38
-\subsection{Jaké vlastnosti má metrika (míra)? Jaké typy metrik a integrálních metrik znáte? Uveďte příklad vybrané metriky.}
+\section{Jaké vlastnosti má metrika (míra)? Jaké typy metrik a integrálních metrik znáte? Uveďte příklad vybrané metriky.}
 \begin{outline}
         \1 nezáporná
         \1 symetrická
@@ -774,7 +786,7 @@ Metrika v prostoru spojitých funkcí
 
 
 %39
-\subsection{Definujte spektrální vzdálenost. Souvisí tato metrika s kepstrální vzdáleností?} 
+\section{Definujte spektrální vzdálenost. Souvisí tato metrika s kepstrální vzdáleností?} 
 Integrál absolutní hodnoty rozdílu dvou ln(PSD)
 \begin{align*}
         d_2^2 = \frac{1}{\pi} \int _0^\pi |\ln(S_x(\theta)) - \ln(S_y(\theta))|^2\dd (\theta)
@@ -784,13 +796,13 @@ Ano, souvisí. Jak, to nevím.
 
 
 %40
-\subsection{Jak se určí kepstrální vzdálenost pro konečný počet kepstrálních koeficientů?}
+\section{Jak se určí kepstrální vzdálenost pro konečný počet kepstrálních koeficientů?}
 
 Kepstrální vzdálenost se určí ze spektrální vzdálenosti. Ze spektrálních koeficientů si spočteme kepstrální koeficienty. Kepstrální vzdálenost je poté Euklidovská vzdálenost v L-rozměrném prostoru kepstrálních koeficientů.
 
 
 %41
-\subsection{Shrňte vlastnosti a význam kepstrální vzdálenosti.}
+\section{Shrňte vlastnosti a význam kepstrální vzdálenosti.}
 \begin{outline}
         \1 Pomáhá nám posoudit, zdali dva segmenty, které zpracováváme, pocházejí ze stejného zdroje a jestli jsou korelované.
         \1 \mt{c_x[0]^2} odpovídá energii segmentu, celkovému kvadrátu plochy spektra \mt{S_x}. Zbytek koeficientů vyjadřuje tvar. 
@@ -803,15 +815,19 @@ Kepstrální vzdálenost se určí ze spektrální vzdálenosti. Ze spektrální
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage \section{Ortogonální transformace}
+\clearpage 
+
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Ortogonální transformace}
+\section*{Ortogonální transformace}
 %42
-\subsection{Co znamená pojem ortogonální transformace? Jak lze tento typ transformace poznat?}
+\section{Co znamená pojem ortogonální transformace? Jak lze tento typ transformace poznat?}
 Transformace, kde jsou na sebe bázové vektory kolmé.
 Po transpozici matice bázových vektorů vyjde stejná matice. 
 
 
 %43
-\subsection{Je DFT ortogonální transformací? Zapište DFT v maticové tvaru a vysvětlete jednotlivé položky tohoto zápisu.}
+\section{Je DFT ortogonální transformací? Zapište DFT v maticové tvaru a vysvětlete jednotlivé položky tohoto zápisu.}
 Jo tvl. neasitvl. Jasně, že je omg. Po čtyřech letech na felu. ano ano ano. vskutku je.
 
 Tady je screen, protože se mi nechce sázet matice v TeXu.
@@ -827,12 +843,12 @@ kde \mt{W_N^{nk} = \e^{2\pi n k/N}}. To jsou body na jednotkové kružnici posun
         \FloatBarrier
 
 %44
-\subsection{Pro jaký typ funkce (signálu) lze ze spojité Fourierovy transformace získat spojitou Fourierovu kosinovou transformaci?}
+\section{Pro jaký typ funkce (signálu) lze ze spojité Fourierovy transformace získat spojitou Fourierovu kosinovou transformaci?}
 Pro reálný signál, který ozrcadlíme - prodloužíme tak aby byl sudý. Poté dá sudé reálné spektrum.
 
 
 %45
-\subsection{Vysvětlete principiálně postup úpravy posloupnosti x[n] vedoucí k definici DCT-1 a DCT-2. Jsou tyto transformace ortogonálními trasformacemi?}
+\section{Vysvětlete principiálně postup úpravy posloupnosti x[n] vedoucí k definici DCT-1 a DCT-2. Jsou tyto transformace ortogonálními trasformacemi?}
 Ano, jsou ortogonální. 
 
 DFT sudého a prodlouženého signálu \rrarr DCT
@@ -843,7 +859,7 @@ DFT sudého a prodlouženého signálu \rrarr DCT
 
 
 %46
-\subsection{Jaký je vztah mezi DFT a DCT-1 a jaký mezi DFT a DCT-2. Lze DCT získat pomocí DFT? Jaké úpravy je třeba provést? Stačí vysvětlit slovně nebo s použitím vhodného náčrtku.}
+\section{Jaký je vztah mezi DFT a DCT-1 a jaký mezi DFT a DCT-2. Lze DCT získat pomocí DFT? Jaké úpravy je třeba provést? Stačí vysvětlit slovně nebo s použitím vhodného náčrtku.}
 
 DCT1 - Původní posloupnost doplním nulami, provedu FT, vezmu reálnou část prvních N vzorků, nebo vyrobím sudou posloupnost, udělám DFT o správném rozměru a získám tím DCT.
 
@@ -856,13 +872,17 @@ idk nějak to tam freestylenu
 
 
 %47
-\subsection{Znáte, kromě DFT a DCT, další ortogonální transformace?}
+\section{Znáte, kromě DFT a DCT, další ortogonální transformace?}
 KLT (PCA), DWT, FT, FS, diskrétní sinová transformace.
 
 
-\newpage \section{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
+\clearpage 
 
-\subsection{Popište princip rozkladu signálu na hlavní komponenty (PCA). Co tyto komponenty představují?}
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
+\section*{Metoda rozkladu na hlavní komponenty/složky – PCA, EVD, KLT}
+
+\section{Popište princip rozkladu signálu na hlavní komponenty (PCA). Co tyto komponenty představují?}
 Hledání vlastních čísel a vlastích vektorů. Následně promítneme data ve směru hlavních vektorů. Následně zjišťujeme rozptyl těchto komponent. Pro kompresi bereme tolik, abychom dostali např. 95~\% původní hodnoty.
 
 Hledaný směr rozptylu je shodný se směry hlavních vektorů. Použití pro redukci dimenze. Zjištujeme redundantnost dat
@@ -875,7 +895,7 @@ Origoš matice \mt{\pmb X} je více měření pod sebou.
 
 
 
-\subsection{Jakou matici PCA používá? Vysvětlete fyzikální význam prvků této matice}
+\section{Jakou matici PCA používá? Vysvětlete fyzikální význam prvků této matice}
 Korelační matice dat, naskládáme naměřená data za sebe -> odhadneme matici korelací. Na diag. rozptyl. Mimo diagonálu - vzájemná energie mezi dvojcí signálů. Pokud nekorelovaná - pouze prvky na hl. diag. 
 
 Úloha hledání vl. čísel a vl. vektorů a průmět dat do směru hlavních vektorů.
@@ -886,7 +906,7 @@ Hledání směru s největším ropzylem dat. Hlavní poloosa elipsy. Hlavní ko
 
 
 %50
-\subsection{Na co je rozložena korelační matice pomocí metody PCA?}
+\section{Na co je rozložena korelační matice pomocí metody PCA?}
 Umíme rozložit na součin 3 matic. Prostřední diagonální nenul. prvky na diag, L a P matice vlastních vektorů <- směry největšího rozptylu dat. 
 
 Hledáme takovou tranformaci z ortog. soustavy souřadnic, ve které se nám data promítnou tak, že budou mít co nejvíc energie v nejmenším počtu průmětů. 
@@ -897,7 +917,7 @@ Diag - vlastní čísla - rozptyl ve směru vl. vektorů
 
 
 %51
-\subsection{Co fyzikálně představují vlastní vektory a vlastní čísla?}
+\section{Co fyzikálně představují vlastní vektory a vlastní čísla?}
 Vl. čísla rozptyl dat ve směru vl. vektorl
 
 Vl. vektory. když do nich natočíme do směrů daných vl. vektory, získáme možnost snížir dimenzinoalitu dat. 1D dat -> info o tom, kolik vl. vektor potřebujeme pro ztrátovou kompresi. 
@@ -905,18 +925,18 @@ Vl. vektory. když do nich natočíme do směrů daných vl. vektory, získáme 
 
 
 %52
-\subsection{Uveďte příklad, kdy metoda PCA selže. Existuje možnost nápravy?}
+\section{Uveďte příklad, kdy metoda PCA selže. Existuje možnost nápravy?}
 
 Rozložení na kružnici, nemáme význačný směr. Pokud budou data z 1. souboru budou proložena daty z 2. souboru. Lze ošetřit nějakou nelineární transformaci. Kvadrát a tak.
 
-\subsection{Jak lze PCA použít pro ztrátovou kompresi 1-D signálů pomocí KLT (Karhunenovy-Loevovy transformace)?}
+\section{Jak lze PCA použít pro ztrátovou kompresi 1-D signálů pomocí KLT (Karhunenovy-Loevovy transformace)?}
 
 1D dat -> info o tom, kolik vl. vektor potřebujeme pro ztrátovou kompresi. 
 
 Stac data, nasegmentujeme, spočteme kovarianční matici  rozložíme na mat. vl. čísel a matice vl. vektor. Data vynásobíme maticí vl. vektorů -> dostaneme nekorelovaný signál. Hodnoty budou seřazeny podle velikosti vlastních čísel. Vezemem tolik hodnot, kolik je vlastních čísel a jejich součet je např. 95 \%. Rekonstrukce signálu - vezmeme transponovanou matici a data dostaneme zpět.
 
 
-\subsection{Lze pro ztrátovou kompresi použít DCT nebo DFT? V čem se liší postup komprese pomocí DCT nebo DFT od PCA/KLT? Jak se liší dosažitelný stupeň komprese těchto tří metod?}
+\section{Lze pro ztrátovou kompresi použít DCT nebo DFT? V čem se liší postup komprese pomocí DCT nebo DFT od PCA/KLT? Jak se liší dosažitelný stupeň komprese těchto tří metod?}
 Ano. PCA, nejlepší komprese. Báze DCT pevná, DFT také. Báze (resp. vlastní vektory) jsou signálově závislé. Dosáhneme optimální kompresi signálu. Nevýhoda - pro každý nový segment signálu nová matice. Výpočetní náročnost. 
 
 \begin{align*}
@@ -927,10 +947,10 @@ V praxi DCT
 
 PCA top, DCT mid, DFT low
 
-\subsection{V čem se liší báze DCT či DFT od báze PCA/KLT? Která z těchto metod poskytuje největší kompresní poměr a proč?}
+\section{V čem se liší báze DCT či DFT od báze PCA/KLT? Která z těchto metod poskytuje největší kompresní poměr a proč?}
 viz předchozí
 
-\subsection{Pomocí čeho se stanovuje počet složek, které použijeme pro ztrátovou kompresi a jak tyto složky vybereme? Porovnejte mezi sebou DFT, DCT a PCA/KLT.}
+\section{Pomocí čeho se stanovuje počet složek, které použijeme pro ztrátovou kompresi a jak tyto složky vybereme? Porovnejte mezi sebou DFT, DCT a PCA/KLT.}
 DFT: vektor signálu, vynásobíme matici sin a cos (W), dostaneme vektor - spektrum, má komplexní čísla, vybereme si taková, která mají největší hodnotu a to přeneseme, ostatní čáry vynulujeme, z přenesených čar provedeme syntézu. Vezmeme iDFT dostaneme rekonstruovaný signál
 
 DCT: jako u DFT
@@ -938,17 +958,17 @@ DCT: jako u DFT
 PCA: signálově závislá báze. Hodnoty seřazeny podle velikosti. Matice neobsahuje sin a nebo cos, ale vlastní vektory spočítané z kovarianční matice dat. "spektrum"
 
 
-\subsection{Co při rozkladu signálu pomocí DFT představují hodnoty modulového spektra |X[k]| nebo výkonového spektra |X[k]|2? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
+\section{Co při rozkladu signálu pomocí DFT představují hodnoty modulového spektra |X[k]| nebo výkonového spektra |X[k]|2? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
 
 Koeficient podobnosti mezi signálem a jednotlivými komponenty báze. (pomíjíme prosakování). Kvadrát modulu - rozptyl signálu v daném frčním pásmu
 
 Vybereme největší hodnoty spektra, poznamenáme si hodnotu a index, ostatní vynulujeme a přeneseme. Následně sestavíme spektrum a následně použijeme iDFT.
 
-\subsection{Co při rozkladu signálu pomocí DCT představují hodnoty DCT-spektra? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
+\section{Co při rozkladu signálu pomocí DCT představují hodnoty DCT-spektra? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
 
 Korelace mezi signálem a cosiny. Ztrátová komprese se dělá obdobně. Porovnání mezi oriho a komprimovaným pomocí střední kvadratické oschylky
 
-\subsection{Co při rozkladu signálu pomocí PCA představují vlastní čísla? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
+\section{Co při rozkladu signálu pomocí PCA představují vlastní čísla? Jak se provede ztrátová komprese a následná zpětná rekonstrukce komprimovaného signálu?}
 
 Rozptyly signálu (datové matice) ve směrech danými vlastními vektory.
 
@@ -966,9 +986,13 @@ Matici $V^T$ získáme metodou PCA a nebo EVD (eigen value decomposition) $\left
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %60 - 67
-\newpage \section{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
+\clearpage
+
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
+\section*{Modely zkreslení signálu a možnosti jeho rekonstrukce – inverzní filtrace}
 %60
-\subsection{Načrtněte model a napište rovnice pro zkreslení signálu aditivním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
+\section{Načrtněte model a napište rovnice pro zkreslení signálu aditivním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
 
 Časová oblast:
 \begin{align*}
@@ -987,7 +1011,7 @@ PSD:
 
 
 %61
-\subsection{Načrtněte model a napište rovnice pro zkreslení signálu konvolučním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
+\section{Načrtněte model a napište rovnice pro zkreslení signálu konvolučním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
 \begin{align*}
         y[n] = s[n]\ast u[n]
 \end{align*}
@@ -1004,20 +1028,20 @@ Pro PSD signálu zkresleného konvolucí platí
 
 
 %62
-\subsection{Načrtněte model a napište rovnice pro zkreslení signálu aditivním a konvolučním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
+\section{Načrtněte model a napište rovnice pro zkreslení signálu aditivním a konvolučním šumem – rovnice napište pro časovou oblast, pomocí korelací i spektrálních hustot.}
 
 Spojení těch rovnic nahoře
 
 
 %63
-\subsection{Jak lze potlačit aditivní šum?}
+\section{Jak lze potlačit aditivní šum?}
 Pokud široko/úzkopásomový, tak ezy filtr. 
 
 Nebo odhadneme spektrum šumu a ve spektrální oblasti ho odečteme.
 
 
 %64
-\subsection{Jak lze potlačit konvoluční šum?}
+\section{Jak lze potlačit konvoluční šum?}
 
 Lineární:
 \begin{outline}
@@ -1035,7 +1059,7 @@ Nelineární:
 
 
 %65
-\subsection{Vysvětlete princip a vlastnosti prosté inverzní filtrace.}
+\section{Vysvětlete princip a vlastnosti prosté inverzní filtrace.}
 
 hardcore matika ahead!!
 \begin{align*}
@@ -1054,7 +1078,7 @@ Problémosy:
 
 
 
-\subsection{Co znamená pojem šumová katastrofa a kdy k ní dochází? Vysvětlete pro deterministické signály. Jak ji lze potlačit?}
+\section{Co znamená pojem šumová katastrofa a kdy k ní dochází? Vysvětlete pro deterministické signály. Jak ji lze potlačit?}
 
 Vzinká při metodě zvýrazňování signálu - u prosté dekonvoluce inverzním filtrem
 když má filtr nuly vně jednotkové kružnice, tak jakmile udělám inverzní, začne vlastně místo zeslabování šumu ho zesilovat, to je šumová katastrofa.
@@ -1063,7 +1087,7 @@ když má filtr nuly vně jednotkové kružnice, tak jakmile udělám inverzní,
 
 
 %67
-\subsection{Jaké existují modifikace inverzní filtrace? Napište příslušné vztahy pro inverzní filtraci, které objasní šumovou katastrofu a popíší modifikace inverzní filtrace (lze použít deterministický popis).}
+\section{Jaké existují modifikace inverzní filtrace? Napište příslušné vztahy pro inverzní filtraci, které objasní šumovou katastrofu a popíší modifikace inverzní filtrace (lze použít deterministický popis).}
 \textbf{Pseudoinverze}:
 \begin{align*}
         H_I = 1/H \text{ pro } [1/H] < M, H_I = 0 \text{ pro } [1/H] \geq M 
@@ -1078,10 +1102,14 @@ když má filtr nuly vně jednotkové kružnice, tak jakmile udělám inverzní,
 
 
 %68 - 71
-\newpage \section{Slepá separace a dekonvoluce}
+\clearpage
+
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Slepá separace a dekonvoluce}
+\section*{Slepá separace a dekonvoluce}
 
 %68
-\subsection{Jaké dva základní způsoby učení/trénování adaptivních filtrů nebo klasifikačních algoritmů znáte? Vysvětlete princip a rozdíly.}
+\section{Jaké dva základní způsoby učení/trénování adaptivních filtrů nebo klasifikačních algoritmů znáte? Vysvětlete princip a rozdíly.}
 
 \begin{outline}
         \1 Učení s učitelem - existují trénovací signálu, pro které známe požadovanou odezvu systému
@@ -1090,7 +1118,7 @@ když má filtr nuly vně jednotkové kružnice, tak jakmile udělám inverzní,
 
 
 %69
-\subsection{Jaké jsou předpoklady pro slepou separaci signálů/zdrojů? Jaké jsou předpoklady pro slepou dekonvoluci ?}
+\section{Jaké jsou předpoklady pro slepou separaci signálů/zdrojů? Jaké jsou předpoklady pro slepou dekonvoluci ?}
 
 Předpoklady:
 \begin{outline}
@@ -1109,7 +1137,7 @@ Pro rozdělení:
 kde \mt{\pmb W} je matice separace, složená z diagonální \mt{\pmb D} a permutační \mt{\pmb P} matice (prohazuje řádky). 
 
 %70
-\subsection{Čím se liší slepá separace od slepé dekonvoluce? K čemu slouží obě metody? Do které skupiny patří metoda nazývaná FastIca?}
+\section{Čím se liší slepá separace od slepé dekonvoluce? K čemu slouží obě metody? Do které skupiny patří metoda nazývaná FastIca?}
 
 Slepá dekonvoluce - známe pouze \textbf{výstupní signál}, může být přítomen aditivní šum. Snažíme se minimalizovat vliv \mt{h(t)} systému. 
 
@@ -1119,7 +1147,7 @@ FastICA - separace.
 
 
 %71
-\subsection{Jaké dekonvoluční metody jsme v tomto kursu poznali? čím se od sebe liší a jaké jsou jejich předpoklady pro úspěšnou dekonvoluci?}
+\section{Jaké dekonvoluční metody jsme v tomto kursu poznali? čím se od sebe liší a jaké jsou jejich předpoklady pro úspěšnou dekonvoluci?}
 
 \begin{outline}
         \1 PCA - \textit{Principal Component Analysis} - hledá směry největšího rozptylu dat (statistika druhého řádu)
@@ -1129,9 +1157,12 @@ FastICA - separace.
 
 
 %72 - 84 
-\newpage \section{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
+\clearpage 
+\phantomsection %pridej odkaz do PDF zalozek
+\addcontentsline{toc}{section}{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
+\section*{Vlnková transformace – spojitá CWT, diskrétní DWT, banka filtrů, kvadraturní zrcadlové filtry}
 
-\subsection{Vysvětlete postup analýzy signálu pomocí FT a STFT. Jak se jmenují výstupy obou metod a co fyzikálně představují?}
+\section{Vysvětlete postup analýzy signálu pomocí FT a STFT. Jak se jmenují výstupy obou metod a co fyzikálně představují?}
 Dyž FT, tak Spektrum\\
 Dyž STFT, tak Spektrogram\\
 Pyčo!
@@ -1140,13 +1171,13 @@ Princip STFT:\\
 signál je nasegmentován na krátké časové úseky a pro každý segment (a jeho překryvy) se udělá vyhlazený spektrální odhad PWelch. Tímto je získán 2D graf, který znázorňuje vývoj PDS v čase (spektrogram).
 
 
-\subsection{Jaký je základní rozdíl mezi STFT a CWT?}
+\section{Jaký je základní rozdíl mezi STFT a CWT?}
 \sout{STFU} STFT: signál porovnáváme s harmonickým průběhem
 
 CWT: na výběr máme sadu předem daných vlnek, které porovnáváme se signálem. 
 
 %74
-\subsection{Jak vypadá časově-frekvenční rozlišení pro STFT a DWT?}
+\section{Jak vypadá časově-frekvenční rozlišení pro STFT a DWT?}
 STFT - Konstantní poměr frekvenčního a časového rozlišení: \mt{\Delta f = 1/T_0}.
 
 \begin{figure}[h]
@@ -1162,7 +1193,7 @@ STFT - Konstantní poměr frekvenčního a časového rozlišení: \mt{\Delta f 
 \FloatBarrier
 
 %75
-\subsection{Co znamenají pojmy vlnka, hladina, aproximace a detaily? Uveďte vhodný příklad s náčrtkem pro vysvětlení těchto pojmů.}
+\section{Co znamenají pojmy vlnka, hladina, aproximace a detaily? Uveďte vhodný příklad s náčrtkem pro vysvětlení těchto pojmů.}
 Vlnka: bázová funkce tranformace. Můžeme roztahovat v čase
 
 Hladina: hodnota koeficientu roztažení
@@ -1176,7 +1207,7 @@ Detailní signál lze získat řezem na dané hladině
 
 
 %76
-\subsection{čím se liší CWT od DWT? K čemu se používají?}
+\section{čím se liší CWT od DWT? K čemu se používají?}
 DWT se smrskává pomocí decimace signálu. Posun i měřítko jsou mocniny dvou.
 
 Má rodinu vlnek, která se odvozuje z mateřské vlnky.
@@ -1193,7 +1224,7 @@ Poté vidíme signály na jednotlivých hladinách, lze jednoduše odstranit šu
 
 
 %77
-\subsection{Co znamenají pojmy měřítková funkce a měřítková rovnice, vlnka a vlnková rovnice? Uveďte libovolný příklad pro vysvětlení těchto pojmů a vztahů mezi nimi.}
+\section{Co znamenají pojmy měřítková funkce a měřítková rovnice, vlnka a vlnková rovnice? Uveďte libovolný příklad pro vysvětlení těchto pojmů a vztahů mezi nimi.}
 Měřítková funkce - funkce, ze které je možné odvodit mateřskou vlnku banky filtrů. 
 
 implementace DWT pomocí banky filtrů.
@@ -1208,7 +1239,7 @@ kde \mt{\phi (t)} je měřítková funkce a \mt{h_0} jsou koeficienty rekonstruk
 
 
 %78
-\subsection{Načrtněte banku filtrů, která realizuje DWT. Jak impulsové odezvy použitých filtrů souvisejí s měřítkovou funkcí a vlnkou?}
+\section{Načrtněte banku filtrů, která realizuje DWT. Jak impulsové odezvy použitých filtrů souvisejí s měřítkovou funkcí a vlnkou?}
 \begin{figure}
         \centering
         \includegraphics[width=.6\textwidth]{fig/banka_filtru.png}
@@ -1226,7 +1257,7 @@ Nutno aby nedošlo ke zkreslení signálu a překrývání.
 
 
 %79
-\subsection{Vysvětlete princip základního způsobu redukce šumů pomocí DWT. Co znamená měkké a tvrdé prahování?}
+\section{Vysvětlete princip základního způsobu redukce šumů pomocí DWT. Co znamená měkké a tvrdé prahování?}
 
 Rozložíme na koeficienty pomocí banky filtrů a šum redukujeme nulováním hodnot pod daným prahem (nebo brnem (haha(ah(aaa(je půlnoc (v NTKčku) před zkouškou (dneska mám zkoušku (boha, kdy se to mám naučit (asi příští semestr)))))))). 
 
@@ -1236,7 +1267,7 @@ Měkké prahování (brnování, páč tam jsou měkký) - pokud překročíme p
 
 
 %80
-\subsection{Co znamená termín mateřská vlnka? Znáte nějaké typy těchto vlnek?}
+\section{Co znamená termín mateřská vlnka? Znáte nějaké typy těchto vlnek?}
 
 Základní vlna, ze které jsou posléze vytvářeny dceřiné vlnky. 
 
@@ -1244,13 +1275,13 @@ Mexická vlnka, Haarova, Morletova.
 
 
 %81
-\subsection{Jak probíhá redukce šumu pomocí STFT a jak pomocí DWT?}
+\section{Jak probíhá redukce šumu pomocí STFT a jak pomocí DWT?}
 
 Ořezáváme spectrogramy/scalogramy tam, kde by mohl být šum a provedem zpětnou tranformaci. U CWT bude šum prolly v detailech. 
 
 
 %82
-\subsection{Načrtněte dvoupásmovou banku filtrů a vysvětlete následující pojmy: analyzující a syntetizující banka filtrů, perfektní rekonstrukce a důsledek požadavku perfektní rekonstrukce pro filtry použité v bance filtrů. Proč se v bance filtrů používá decimace a interpolace?}
+\section{Načrtněte dvoupásmovou banku filtrů a vysvětlete následující pojmy: analyzující a syntetizující banka filtrů, perfektní rekonstrukce a důsledek požadavku perfektní rekonstrukce pro filtry použité v bance filtrů. Proč se v bance filtrů používá decimace a interpolace?}
 Dvoupásmová - dělení pásma na dvě poloviny DP/HP, zrcadlové filtry. 
 
 Kvadraturní zrcadlové filtry - výkonově komplementární \
@@ -1280,7 +1311,7 @@ Podmínky:
 
 \FloatBarrier
 %83
-\subsection{Vysvětlete stručně postup návrhu dvoupásmové banky filtrů s perfektní rekonstrukcí. Jsou přenosové funkce filtrů použitých v dvoupásmové bance filtrů libovolné nebo jsou vázány nějakými podmínkami?}
+\section{Vysvětlete stručně postup návrhu dvoupásmové banky filtrů s perfektní rekonstrukcí. Jsou přenosové funkce filtrů použitých v dvoupásmové bance filtrů libovolné nebo jsou vázány nějakými podmínkami?}
 
 \begin{outline}[enumerate]
         \1 Návrh prototypu \mt{H_0(z)}
@@ -1293,7 +1324,7 @@ Podmínky:
 
 
 %84
-\subsection{Vysvětlete pojem kvadraturní zrcadlové filtry a načrtněte jejich frekvenční charakteristiky.}
+\section{Vysvětlete pojem kvadraturní zrcadlové filtry a načrtněte jejich frekvenční charakteristiky.}
 
 Filtry, které jsou proto sobě zrcadlové a mají stejné výkonové zesílení. Součet kvadrátu modulu musí dát 1. 
 
