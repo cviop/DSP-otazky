@@ -3,7 +3,7 @@
 \usepackage{ucs}                        %kodovani unicode
 \usepackage[czech]{babel}               %podpora cestiny
 \usepackage[T1]{fontenc}                %pouzij variantu pisma T1 (hacky, carky)
-\usepackage[left=2.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry} %okraje stranky
+\usepackage[left=2.5cm,right=1.5cm,top=2cm,bottom=2.5cm]{geometry} %okraje stranky
 \usepackage{amsmath,amsfonts,amssymb}   %podpora matematiky
 \usepackage{gensymb,marvosym}           %symboly celsius (\celsius) apod.
 %\usepackage{mathptmx}                   %font Times New Roman s~podporou matematiky
@@ -60,11 +60,17 @@
 %--- KONEC PREAMBULE ---
 
 
+\newcommand{\nazev}{DSP otázky}                                                        %
+\newcommand{\jmeno}{J.D.}                                                     %
+\newcommand{\datum}{\today}  
+
+
+
 
 \begin{document}
+\pagenumbering{gobble} 
 
-
-
+%\pagestyle{empty} %stranku necislovat
 \pagestyle{fancy}                                           %vlastni zahlavi/zapati
 \renewcommand{\headrulewidth}{0.5pt}                        %linka v~zahlavi
 \renewcommand{\footrulewidth}{0pt}                          %linka v~zapati - optional
@@ -83,6 +89,15 @@
 
 \tableofcontents
 \newpage
+\pagenumbering{arabic}  
+
+\setcounter{page}{1}
+\pagestyle{fancy}                                       %vlastni zahlavi/zapati
+\renewcommand{\headrulewidth}{0.5pt}                      %bez linky v~zahlavi
+\renewcommand{\footrulewidth}{0pt}                    %linka v~zapati - optional
+\lhead{\nazev}       \chead{verze \today} \rhead{\url{github.com/cviop/EO1-teorie}}                        %pole zahlavi (prazdna)
+\lfoot{} \cfoot{\thepage} \rfoot{}   %pole zapati
+
 \phantomsection %pridej odkaz do PDF zalozek
 \addcontentsline{toc}{section}{Modelování - syntéza a analýza}
 \okruh{Modelování - syntéza a analýza}
@@ -155,7 +170,7 @@ Pro \textit{vzájemnou korelaci} (po inverzní Fourierce \mt{C_{xv}}) platí:
         R_{xv}[k] = h[k].
 \end{align*}
 
-Pro filtr s impulzovou odezvou \mt{h[k]}, který budíme jednotkovým pulzem \mt{v=\delta[n]} a výstupní signál \mt{x[n]} platí:
+Pro filtr s impulzovou odezvou \mt{h[k]}, který budíme jednotkovým pulzem \mt{v[n]=\delta[n]} a výstupní signál \mt{x[n]} platí:
 \begin{table}[h!]
         \centering
         \begin{tabular}{ll}
@@ -198,7 +213,7 @@ Pro filtr s impulzovou odezvou \mt{h[k]}, který budíme bílým šumem \mt{u[n]
 %4
 \section{Vysvětlete, co znamená pojem autoregresní (AR) proces (signál). Jak jej lze generovat? Nakreslete blokové schéma pro generování AR signálu a popište jej.}
 \label{sec:ar:intro}
-AR filtr: filtr tvořen pouze póly. AR spektrum vykazuje ostrá maxima a mělká údolí. AR proces \mt{AR(p)}, generovaný IIR filtrem řádu \mt{p}, který nemá dopředné vazby:
+\textbf{AR filtr}: filtr tvořen pouze póly. AR spektrum vykazuje ostrá maxima a mělká údolí. AR proces \mt{AR(p)}, generovaný IIR filtrem řádu \mt{p}, který nemá dopředné vazby:
 \begin{align*}
         x[n]=-\sum_{k=1}^p a_k x[n-k] + u[n]
 \end{align*}
@@ -357,12 +372,17 @@ Pro minimalizaci chyby následně využíváme dvou metod. Buď minimalizujeme s
 
 %10
 \section{Co jsou a k čemu slouží normální (Yuleovy-Walkerovy) rovnice?}\label{sec:yule}
-Normální rovnice pro \textbf{autokorelační metodu}. Jedná se o sadu rovnic určenou k odhadu parametrů AR modelu. Díky čemuž můžeme učinit odhad budoucích hodnot. Pro správný odhad musí být proces stacionární stochastický a musíme znát ACF procesu. Poté YW rovnice berou ACF koeficienty a z nich tvoří koeficienty do AR modelu.
+
+Slouží k odhadu parametrů AR modelu. 
+
+Normální rovnice pro \textbf{autokorelační metodu}. Jedná se o sadu rovnic určenou k odhadu parametrů AR modelu. Díky čemuž můžeme učinit odhad budoucích hodnot. Pro správný odhad musí být proces stacionární stochastický a musíme znát ACF procesu. 
+Poté YW rovnice berou ACF koeficienty a z nich tvoří koeficienty do AR modelu.
 \begin{align*}
         a_1 R_x[0] + a_2 R_x[1] = -R_x[1]\\
         a_1 R_x[1] + a_2 R_x[0] = -R_x[2]
 \end{align*}
 
+U zkoušky se hodí říct, že rovnice jsou \textbf{lineární}. Tedy je snadné najít jejích řešení (inverzní matice). Proto se používají AR modely - je snadné zjistit jejich parametry.
 
 %11
 \section{Popište postup vedoucí k určení AR spektrální hustoty. V čem se liší od spektrální hustoty získané Welchovou metodou z hlediska typického tvaru, spektrálního rozlišení, potřebné délky signálu a odolnosti vůči aditivnímu šumu?}
@@ -450,13 +470,13 @@ Popis šíření:
 Dochází ke změně tvaru korelace mezi vstupem a výstupem, nelze použít pro měření zpoždění. 
 
 
-%13
+%13 
 \section{Jaké charakteristiky lze využít pro měření zpoždění mezi signály? Jak jejich volbu ovlivňuje typ prostředí? Jaké podmínky musí být splněny pro získání spolehlivého odhadu zpoždění?}\label{sec:zpozdeni:zpusoby}
 
 \textbf{Nedisperzní prostředí}:\\
 Pokud známe vstup \mt{x(t)} i výstup \mt{y(t)}, můžeme v nedisperzním prostředí použít \textbf{vzájemnou korelaci}. Pouze v nedisperzním! V disperzním se mění tvar korelační funkce výstupního signálu a nelze tak použít. 
 
-Jak bylo v \ref{sec:zpozdeni:uvod} uvedeno, výstupní zpožděný signál má tvar \mt{y(t) = k_0 x (t-\tau_0) + u(t)}, kde \mt{u(t)} je aditivní bílý šum.
+Jak bylo v kapitole \ref{sec:zpozdeni:uvod} uvedeno, výstupní zpožděný signál má tvar \mt{y(t) = k_0 x (t-\tau_0) + u(t)}, kde \mt{u(t)} je aditivní bílý šum.
 \begin{align*}
         R_{yx}(\tau) = E[y(t+\tau)x(t)] \rightarrow k_0R_{xx}(\tau-tau_0)
 \end{align*}
@@ -494,7 +514,7 @@ Podmínky:
 
 %14
 \section{Jak vypadá vzájemná korelace mezi signálem na vstupu a na výstupu LTI soustavy? Jaký je její vztah k autokorelaci vstupního signálu?}
-Vzoreček zmíněn ve \ref{sec:zpozdeni:zpusoby}.
+Vzoreček zmíněn v kapitole \ref{sec:zpozdeni:zpusoby}.
 \begin{align*}
         R_{yx}(\tau) = E[y(t+\tau)x(t)] \rightarrow k_0R_{xx}(\tau-\tau_0)
 \end{align*}
@@ -504,7 +524,7 @@ Rozdíl mezi \mt{R_{yx}} a \mt{R_{xx}} je pouze ve zpoždění \mt{\tau_0}.
 
 %15
 \section{Jak lze ze vzájemné korelační funkce určit zpoždění mezi vstupním a výstupním signálem LTI soustavy? Načrtněte obrázek a pomocí něj vysvětlete. Jak souvisí toto zpoždění se vzorkovací frekvencí?}
-Popsáno v \ref{sec:zpozdeni:uvod} a \ref{sec:zpozdeni:zpusoby}. Najdeme si maximum korelace mezi vstupem a výstupem. Z pozice maxima vzájemné korelace získáme, o kolik vzorků jsou od sebe signály posunuté.
+Popsáno v kapitolách \ref{sec:zpozdeni:uvod} a \ref{sec:zpozdeni:zpusoby}. Najdeme si maximum korelace mezi vstupem a výstupem. Z pozice maxima vzájemné korelace získáme, o kolik vzorků jsou od sebe signály posunuté.
 
 
 %16
